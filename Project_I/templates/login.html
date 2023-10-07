@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+
+{% block title %}Disease Predictor | Login{% endblock%}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <header>Login Form</header>
+  <form action="{{ url_for('login') }}" method="POST">
+    <div class="field email">
+      <div class="input-area">
+        {{ form.email.label(class = "form-control-label") }}<br>
+        {% if form.email.errors %}
+
+        <div class="invalid-feedback">
+          {% for error in form.email.errors %}
+          <span>{{error}}</span>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.email(class = "form-control-lg") }}
+        <i class="icon fas fa-envelope"></i>
+        {% endif %}
+      </div>
+
+      <!-- <div class="error error-txt">Email can't be blank</div> -->
+    </div>
+
+    <div class="field password">
+      <div class="input-area">
+        {{ form.password.label(class = "form-control-label") }}<br>
+        {% if form.password.errors %}
+
+        <div class="invalid-feedback">
+          {% for error in form.password.errors %}
+          <span>{{error}}</span>
+          <i class="error error-icon fas fa-exclamation-circle"></i>
+          {% endfor %}
+        </div>
+        {% else %}
+        {{ form.password(class = "form-control-lg") }}
+        <i class="icon fas fa-lock"></i>
+        {% endif %}
+      </div>
+
+      <!-- <div class="error error-txt">Password can't be blank</div> -->
+    </div>
+    <br>
+    <div class="pass-txt"><a href="#">Forgot password?</a></div>
+    <br>
+    <div>
+      {{ form.submit(class = "btn btn-outline-info") }} 
+      
+      <!-- <button type="submit" onclick = "document.location='predict.html'">Login</button> -->
+      <!-- <div class="sign-txt">Not yet member? <a class="ml-2" href="{{ url_for('register')}}">Register now</a></div> -->
+    </div>
+  </form>
+  <br>
+  <div class="sign-txt">Not yet member? <a class="ml-2" href="{{ url_for('register')}}">Register now</a></div>
+</div>
+
+{% endblock %}

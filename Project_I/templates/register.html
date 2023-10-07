@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}Disease Predictor | Login{% endblock%}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <div class="container">
+        <form action="{{url_for('register')}}" method="post">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Registration Form</legend>
+                <div class="form-group">
+
+                    {{ form.username.label(class = "form-control-label") }}<br>
+                    {% if form.username.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{error}}</span>
+                        <i class="error error-icon fas fa-exclamation-circle"></i>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class = "form-control-lg") }}
+                    <i class="icon fas fa-user"></i>
+                    {% endif %}
+                    <!-- <div class="error error-txt">Name can't be blank</div> -->
+                </div>
+
+                <div class="form-group">
+                    <div class="input-area">
+                        {{ form.email.label(class = "form-control-label") }}<br>
+                        {% if form.email.errors %}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                            <span>{{error}}</span>
+                            <i class="error error-icon fas fa-exclamation-circle"></i>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.email(class = "form-control-lg") }}
+                        <i class="icon fas fa-envelope"></i>
+                        {% endif %}
+
+                        <!-- <input type="text" name='email' placeholder="Email Address"> -->
+
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="input-area">
+                        {{ form.password.label(class = "form-control-label") }}<br>
+                        {% if form.password.errors %}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                            <span>{{error}}</span>
+                            <i class="error error-icon fas fa-exclamation-circle"></i>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.password(class = "form-control-lg") }}
+                        <i class="icon fas fa-lock"></i>
+                        {% endif %}
+                    </div>
+                    <!-- <div class="error error-txt">Password can't be blank</div> -->
+                </div>
+
+                <div class="form-group">
+                    <div class="input-area">
+                        {{ form.confirm.label(class = "form-control-label") }}<br>
+                        {% if form.confirm.errors %}
+
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm.errors %}
+                            <span>{{error}}</span>
+                            <i class="error error-icon fas fa-exclamation-circle"></i>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        {{ form.confirm(class = "form-control-lg") }}
+                        <i class="icon fas fa-lock"></i>
+                        {% endif %}
+                    </div>
+                    <!-- <div class="error error-txt">Password can't be blank</div> -->
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <!-- <input type="submit" value="Register"> -->
+                {{ form.submit(class = "btn btn-outline-info") }}
+            </div>
+
+            <div>
+                <small>
+                    Alredy have an account??<a class="ml-2" href="{{ url_for('login')}}">Sign in</a>
+                </small>
+            </div>
+        </form>
+    </div>
+
+
+    {% endblock %}

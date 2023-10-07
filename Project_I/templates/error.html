@@ -1,0 +1,20 @@
+<!-- {% extends "layout.html" %} {% block title %}Disease Predictor{% endblock%} {%
+    block css %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/predict.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/c94b015217.js"
+      crossorigin="anonymous"
+    ></script>
+    {% endblock %} {% block body %}
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+          <!-- <h1 class="display-5">Prediction of Disease</h1> -->
+          <p class="lead">Please find your prediction result here.</p>
+      
+      {% if prediction %} 
+      <div class="container themed-container"><h1 style="text-align: center;">You may be suffering from "{{prediction}}"</h1></div>
+      {% endif %}
+    </div>
+    {% endblock %}  -->

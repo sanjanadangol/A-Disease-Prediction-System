@@ -1,0 +1,42 @@
+{% extends "layout.html" %} {% block title %}Disease Predictor{% endblock%} {%
+block css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/predict.css') }}"
+/>
+<script
+  src="https://kit.fontawesome.com/c94b015217.js"
+  crossorigin="anonymous"
+></script>
+{% endblock %} {% block body %}
+<div class="container mt-5">
+  <h1 class="mt-5">Select the symptoms.</h1>
+  
+  <form method="POST" action="{{url_for('prediction_page')}}">
+    <ul class="cbox-tags">
+      {% for symptom in symptoms %}
+      <li>
+        <input
+          type="checkbox"
+          id="{{symptom}}"
+          name="cbox"
+          value="{{symptom.title()}}"
+        />
+        <label for="{{symptom}}">{{symptom}}</label>
+      </li>
+
+      {% endfor %}
+
+
+    </ul>
+    
+    <button type="submit" name="predict" class="btn btn-primary">
+      Predict
+    </button>
+  
+  </form>
+  <br />
+  <br />
+
+</div>
+{% endblock %}
